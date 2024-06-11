@@ -71,7 +71,7 @@ Here's a brief overview of the project structure:
 ├── ft_tolower.c
 ├── ft_toupper.c
 ├── Makefile
-├── README.md
+└── README.md
 ```
 
 ## Installation
