@@ -117,8 +117,9 @@ Contributions are welcome! If you have any suggestions or improvements, feel fre
 
 ## Grade
 
-Norminette: OK!
-Grade: 125/100
+- Norminette: OK!
+- Grade: 125/100
+  
 ---
 
 Happy coding!
