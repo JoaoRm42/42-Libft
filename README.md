@@ -11,6 +11,7 @@ Welcome to the 42 Libft Project repository! This project is part of the 42 curri
 - [Usage](#usage)
 - [Contributing](#contributing)
 - [Acknowledgments](#acknowledgments)
+- [Grade](#grade)
 
 ## Introduction
 
@@ -114,6 +115,9 @@ Contributions are welcome! If you have any suggestions or improvements, feel fre
 - The C programming community for their excellent documentation and support.
 - All contributors who have helped improve this project.
 
+#Grade
+Norminette: OK!
+Grade: 125/100
 ---
 
 Happy coding!
