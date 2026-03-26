@@ -5,36 +5,33 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: joaoped2 <joaoped2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/03 10:53:53 by joaoped2          #+#    #+#             */
-/*   Updated: 2022/11/09 15:25:08 by joaoped2         ###   ########.fr       */
+/*   Created: 2022/11/03 09:38:51 by joaoped2          #+#    #+#             */
+/*   Updated: 2026/03/24 22:16:00 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/*
+** ft_strncmp:
+** Compara duas strings até n caracteres.
+*/
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	unsigned char	*ptr1;
-	unsigned char	*ptr2;
+	size_t	i;
 
-	ptr1 = (unsigned char *)s1;
-	ptr2 = (unsigned char *)s2;
-	while (n && *ptr1 && *ptr1 == *ptr2)
-	{
-		++ptr1;
-		++ptr2;
-		--n;
-	}
-	if (n)
-		return (*ptr1 - *ptr2);
-	else
+	i = 0;
+	if (n == 0)
 		return (0);
+	while (i < n - 1 && s1[i] && s2[i] && s1[i] == s2[i])
+		i++;
+	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }
 
-/*int	main()
+/*int	main(void)
 {
-	char	str[] = "Sera que sou grande?";
-	char	str1[] = "Ou sera que eu ainda sou maior?";
-	ft_putnbr_fd(ft_strncmp(str, str1, 5), 1);
-	ft_putchar_fd('\n', 1);
+	printf("%d\n", ft_strncmp("abc", "abc", 3));
+	printf("%d\n", ft_strncmp("abc", "abd", 3));
+	printf("%d\n", ft_strncmp("abd", "abc", 3));
+	return (0);
 }*/

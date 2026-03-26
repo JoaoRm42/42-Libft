@@ -5,25 +5,26 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: joaoped2 <joaoped2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/03 09:39:20 by joaoped2          #+#    #+#             */
-/*   Updated: 2022/11/09 15:14:30 by joaoped2         ###   ########.fr       */
+/*   Created: 2022/11/03 09:39:02 by joaoped2          #+#    #+#             */
+/*   Updated: 2026/03/24 22:10:00 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/*
+** ft_isdigit:
+** Verifica se o caráter é numérico (0-9).
+*/
 int	ft_isdigit(int c)
 {
-	return ('0' <= c && c <= '9');
+	return (c >= '0' && c <= '9');
 }
-/*int main()
+
+/*int	main(void)
 {
-	ft_putnbr_fd(ft_isdigit('5'), 1);
-	ft_putchar_fd('\n', 1);
-	ft_putnbr_fd(ft_isdigit('4'), 1);
-	ft_putchar_fd('\n', 1);
-	ft_putnbr_fd(ft_isdigit('a'), 1);
-	ft_putchar_fd('\n', 1);
-	ft_putnbr_fd(ft_isdigit('\t'), 1);
-	ft_putchar_fd('\n', 1);
+	printf("%d\n", ft_isdigit('0'));
+	printf("%d\n", ft_isdigit('9'));
+	printf("%d\n", ft_isdigit('a'));
+	return (0);
 }*/

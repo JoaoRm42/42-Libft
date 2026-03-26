@@ -6,33 +6,40 @@
 /*   By: joaoped2 <joaoped2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 13:36:13 by joaoped2          #+#    #+#             */
-/*   Updated: 2022/11/09 15:24:13 by joaoped2         ###   ########.fr       */
+/*   Updated: 2026/03/24 22:20:00 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/*
+** ft_striteri:
+** Aplica função in-place a cada caráter da string.
+*/
 void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 {
 	unsigned int	i;
 
-	i = 0;
-	if (!s)
+	if (!s || !f)
 		return ;
+	i = 0;
 	while (s[i])
 	{
-		(*f)(i, (s + i));
-		++i;
+		f(i, &s[i]);
+		i++;
 	}
 }
 
-/*void	ft_test(unsigned int i, char *str)
-	{
-		*str += i;
-	}
-int	main()
+/*static void	plus_i(unsigned int i, char *c)
 {
-	char	str[] = "aBcDeF";
-	ft_striteri(str, ft_test);
-	ft_putendl_fd(str, 1);
+	*c += i;
+}
+
+int	main(void)
+{
+	char	s[] = "aaaa";
+
+	ft_striteri(s, plus_i);
+	printf("%s\n", s);
+	return (0);
 }*/

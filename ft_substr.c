@@ -5,34 +5,49 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: joaoped2 <joaoped2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/03 12:28:37 by joaoped2          #+#    #+#             */
-/*   Updated: 2022/11/09 15:25:44 by joaoped2         ###   ########.fr       */
+/*   Created: 2022/11/03 11:35:46 by joaoped2          #+#    #+#             */
+/*   Updated: 2026/03/24 22:18:00 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/*
+** ft_substr:
+** Cria substring a partir de uma posição e comprimento.
+*/
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	char	*subst;
-	size_t	size;
+	char	*sub;
+	size_t	slen;
+	size_t	i;
 
 	if (!s)
 		return (NULL);
-	if (start >= ft_strlen(s))
+	slen = ft_strlen(s);
+	if (start >= slen)
 		return (ft_strdup(""));
-	size = ft_strlen(s + start);
-	if (size < len)
-		len = size;
-	subst = (char *)malloc(sizeof(char) * (len + 1));
-	if (!subst)
+	if (len > slen - start)
+		len = slen - start;
+	sub = (char *)malloc(len + 1);
+	if (!sub)
 		return (NULL);
-	ft_strlcpy(subst, s + start, len + 1);
-	return (subst);
+	i = 0;
+	while (i < len)
+	{
+		sub[i] = s[start + i];
+		i++;
+	}
+	sub[i] = '\0';
+	return (sub);
 }
 
-/*int	main()
+/*int	main(void)
 {
-	char	str[] = "Mais um pouco e era Sub-Zero!";
-	ft_putendl_fd(ft_substr(str, 20, 30), 1);
+	char	*s;
+
+	s = ft_substr("abcdef", 2, 3);
+	printf("%s\n", s);
+	free(s);
+	return (0);
 }*/

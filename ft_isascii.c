@@ -5,26 +5,26 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: joaoped2 <joaoped2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/03 09:39:11 by joaoped2          #+#    #+#             */
-/*   Updated: 2022/11/09 15:13:00 by joaoped2         ###   ########.fr       */
+/*   Created: 2022/11/03 09:38:51 by joaoped2          #+#    #+#             */
+/*   Updated: 2026/03/24 22:10:00 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/*
+** ft_isascii:
+** Verifica se o valor pertence ao intervalo ASCII.
+*/
 int	ft_isascii(int c)
 {
 	return (c >= 0 && c <= 127);
 }
 
-/*int	main()
+/*int	main(void)
 {
-	ft_putnbr_fd(ft_isascii(50), 1);
-	ft_putchar_fd('\n', 1);
-	ft_putnbr_fd(ft_isascii(100), 1);
-	ft_putchar_fd('\n', 1);
-	ft_putnbr_fd(ft_isascii(190), 1);
-	ft_putchar_fd('\n', 1);
-	ft_putnbr_fd(ft_isascii(200), 1);
-	ft_putchar_fd('\n', 1);
+	printf("%d\n", ft_isascii(0));
+	printf("%d\n", ft_isascii(127));
+	printf("%d\n", ft_isascii(128));
+	return (0);
 }*/

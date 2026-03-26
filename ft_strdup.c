@@ -5,32 +5,41 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: joaoped2 <joaoped2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/03 11:37:16 by joaoped2          #+#    #+#             */
-/*   Updated: 2022/11/09 15:23:44 by joaoped2         ###   ########.fr       */
+/*   Created: 2022/11/03 11:35:46 by joaoped2          #+#    #+#             */
+/*   Updated: 2026/03/24 22:17:00 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/*
+** ft_strdup:
+** Duplica uma string para memória recém-alocada.
+*/
 char	*ft_strdup(const char *src)
 {
-	char	*dest;
-	size_t	len;
+	char	*dst;
+	size_t	i;
 
-	len = ft_strlen(src) + 1;
-	dest = malloc(len);
-	if (dest == NULL)
+	dst = (char *)malloc(ft_strlen(src) + 1);
+	if (!dst)
 		return (NULL);
-	ft_memcpy(dest, src, len);
-	return (dest);
+	i = 0;
+	while (src[i])
+	{
+		dst[i] = src[i];
+		i++;
+	}
+	dst[i] = '\0';
+	return (dst);
 }
 
-/*int	main()
+/*int	main(void)
 {
-	char	str[] = "Vou ser duplicado e nem te apercebes!";
-	char	str1[] = "Ve o valgrind!";
-	char	str2[] = "Ou o pyhtontutor!";
-	ft_putendl_fd(ft_strdup(str), 1);
-	ft_putendl_fd(ft_strdup(str1), 1);
-	ft_putendl_fd(ft_strdup(str2), 1);
+	char	*s;
+
+	s = ft_strdup("duplicado");
+	printf("%s\n", s);
+	free(s);
+	return (0);
 }*/

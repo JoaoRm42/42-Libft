@@ -5,33 +5,41 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: joaoped2 <joaoped2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/03 10:16:16 by joaoped2          #+#    #+#             */
-/*   Updated: 2022/11/09 15:24:36 by joaoped2         ###   ########.fr       */
+/*   Created: 2022/11/03 09:38:51 by joaoped2          #+#    #+#             */
+/*   Updated: 2026/03/24 22:15:00 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/*
+** ft_strlcpy:
+** Copia string para dest com limite de tamanho.
+*/
 size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 {
+	size_t	len;
 	size_t	i;
 
-	if (!size)
-		return (ft_strlen(src));
+	len = ft_strlen(src);
 	i = 0;
-	while (src[i] && (i < size - 1))
+	if (size == 0)
+		return (len);
+	while (src[i] && i < size - 1)
 	{
 		dest[i] = src[i];
 		i++;
 	}
-	dest[i] = 0;
-	return (ft_strlen(src));
+	dest[i] = '\0';
+	return (len);
 }
 
-/*int	main()
+/*int	main(void)
 {
-	char	dest[] = "nem me vais ver!";
-	char	src[] = "nem a mim, mas vais saber o nosso tamanho!";
-	ft_putnbr_fd(ft_strlcpy(dest, src, 20), 1);
-	ft_putchar_fd('\n', 1);
+	char	dst[5];
+	size_t	r;
+
+	r = ft_strlcpy(dst, "abcdef", sizeof(dst));
+	printf("%s | %zu\n", dst, r);
+	return (0);
 }*/

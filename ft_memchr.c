@@ -5,34 +5,36 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: joaoped2 <joaoped2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/03 11:16:40 by joaoped2          #+#    #+#             */
-/*   Updated: 2022/11/09 15:17:26 by joaoped2         ###   ########.fr       */
+/*   Created: 2022/11/03 09:38:51 by joaoped2          #+#    #+#             */
+/*   Updated: 2026/03/24 22:16:00 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/*
+** ft_memchr:
+** Procura um byte nos primeiros n bytes de memória.
+*/
 void	*ft_memchr(const void *s, int c, size_t n)
 {
-	unsigned char	*ptr;
+	const unsigned char	*p;
 
-	ptr = (unsigned char *)s;
-	c = (unsigned char)c;
-	while (n && *ptr != c)
+	p = (const unsigned char *)s;
+	while (n--)
 	{
-		++ptr;
-		--n;
+		if (*p == (unsigned char)c)
+			return ((void *)p);
+		p++;
 	}
-	if (n)
-		return ((void *)ptr);
-	else
-		return (NULL);
+	return (NULL);
 }
 
-/*int	main()
+/*int	main(void)
 {
-	char str[] = "Quando encontrares . segue!";
-	char c = 'e';
-	ft_putstr_fd(ft_memchr(str, c, ft_strlen(str)), 1);
-	ft_putchar_fd('\n', 1);
+	char	*s = "abcdef";
+
+	printf("%s\n", (char *)ft_memchr(s, 'd', 6));
+	printf("%p\n", ft_memchr(s, 'x', 6));
+	return (0);
 }*/

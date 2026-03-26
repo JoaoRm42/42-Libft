@@ -6,78 +6,75 @@
 /*   By: joaoped2 <joaoped2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 15:23:07 by joaoped2          #+#    #+#             */
-/*   Updated: 2022/11/09 15:16:06 by joaoped2         ###   ########.fr       */
+/*   Updated: 2026/03/24 22:30:00 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_get_size(int n)
+static int	ft_numlen(long n)
 {
-	int	size;
+	int	len;
 
-	size = 0;
-	if (n <= 0)
-		size++;
-	while (n != 0)
-	{
-		n = n / 10;
-		size++;
-	}
-	return (size);
-}
-
-static void	ft_fill_res(int size, int offset, int n, char *res)
-{
-	while (size > offset)
-	{
-		res[size - 1] = n % 10 + '0';
-		n = n / 10;
-		size--;
-	}
-}
-
-char	*ft_itoa(int n)
-{
-	int		offset;
-	int		size;
-	char	*res;
-
-	offset = 0;
-	size = ft_get_size(n);
-	res = (char *)malloc(sizeof(char) * size + 1);
-	if (!res)
-		return (0);
-	if (n == -2147483648)
-	{
-		res[0] = '-';
-		res[1] = '2';
-		n = 147483648;
-		offset = 2;
-	}
+	len = 1;
 	if (n < 0)
 	{
-		res[0] = '-';
-		offset = 1;
+		len++;
 		n = -n;
 	}
-	ft_fill_res(size, offset, n, res);
-	res[size] = '\0';
+	while (n >= 10)
+	{
+		n /= 10;
+		len++;
+	}
+	return (len);
+}
+
+/*
+** ft_itoa:
+** Converte um inteiro para string.
+*/
+char	*ft_itoa(int n)
+{
+	char	*res;
+	long	nb;
+	int		len;
+	int		i;
+
+	nb = n;
+	len = ft_numlen(nb);
+	res = (char *)malloc(len + 1);
+	if (!res)
+		return (NULL);
+	res[len] = '\0';
+	if (nb == 0)
+		res[0] = '0';
+	if (nb < 0)
+	{
+		res[0] = '-';
+		nb = -nb;
+	}
+	i = len - 1;
+	while (nb > 0)
+	{
+		res[i--] = (nb % 10) + '0';
+		nb /= 10;
+	}
 	return (res);
 }
 
-/*int main()
+/*int	main(void)
 {
-	int	i = 125;
-	int	j = -814;
-	int	min = -2147483648;
-	int	max = 2147483647;
-	ft_putstr_fd(ft_itoa(i), 1);
-	ft_putchar_fd('\n', 1);
-	ft_putstr_fd(ft_itoa(j), 1);
-	ft_putchar_fd('\n', 1);
-	ft_putstr_fd(ft_itoa(min), 1);
-	ft_putchar_fd('\n', 1);
-	ft_putstr_fd(ft_itoa(max), 1);
-	ft_putchar_fd('\n', 1);
+	char	*s1;
+	char	*s2;
+	char	*s3;
+
+	s1 = ft_itoa(0);
+	s2 = ft_itoa(-2147483648);
+	s3 = ft_itoa(2147483647);
+	printf("%s | %s | %s\n", s1, s2, s3);
+	free(s1);
+	free(s2);
+	free(s3);
+	return (0);
 }*/

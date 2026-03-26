@@ -5,38 +5,47 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: joaoped2 <joaoped2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/03 14:21:53 by joaoped2          #+#    #+#             */
-/*   Updated: 2022/11/09 15:24:26 by joaoped2         ###   ########.fr       */
+/*   Created: 2022/11/03 11:35:46 by joaoped2          #+#    #+#             */
+/*   Updated: 2026/03/24 22:18:00 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/*
+** ft_strjoin:
+** Cria nova string com a junção de s1 e s2.
+*/
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char	*dest;
-	size_t	len1;
-	size_t	len2;
+	char	*res;
+	size_t	i;
+	size_t	j;
 
-	if (!s1 && !s2)
-		return (ft_strdup(""));
-	if (s1 && !s2)
-		return (ft_strdup(s1));
-	if (!s1 && s2)
-		return (ft_strdup(s2));
-	len1 = ft_strlen(s1);
-	len2 = ft_strlen(s2);
-	dest = (char *)malloc(sizeof(char) * (len1 + len2 + 1));
-	if (!dest)
+	if (!s1 || !s2)
 		return (NULL);
-	ft_strlcpy(dest, s1, len1 + 1);
-	ft_strlcat(dest, s2, len1 + len2 + 1);
-	return (dest);
+	res = (char *)malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
+	if (!res)
+		return (NULL);
+	i = 0;
+	while (s1[i])
+	{
+		res[i] = s1[i];
+		i++;
+	}
+	j = 0;
+	while (s2[j])
+		res[i++] = s2[j++];
+	res[i] = '\0';
+	return (res);
 }
 
-/*int	main()
+/*int	main(void)
 {
-	char	str[] = "Junta te a mim, ";
-	char	str1[] = "nos ja vivemos 100 mil anos!";
-	ft_putendl_fd(ft_strjoin(str, str1), 1);
+	char	*s;
+
+	s = ft_strjoin("ola", " mundo");
+	printf("%s\n", s);
+	free(s);
+	return (0);
 }*/

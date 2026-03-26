@@ -5,32 +5,32 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: joaoped2 <joaoped2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/03 09:39:38 by joaoped2          #+#    #+#             */
-/*   Updated: 2022/11/09 15:19:21 by joaoped2         ###   ########.fr       */
+/*   Created: 2022/11/03 09:38:51 by joaoped2          #+#    #+#             */
+/*   Updated: 2026/03/24 22:10:00 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/*
+** ft_memset:
+** Preenche n bytes de memória com o valor indicado.
+*/
 void	*ft_memset(void *s, int c, size_t n)
 {
-	size_t	i;
-	char	*string;
+	unsigned char	*p;
 
-	string = (char *)s;
-	i = 0;
-	while (i < n)
-	{
-		string[i] = c;
-		i++;
-	}
+	p = (unsigned char *)s;
+	while (n--)
+		*p++ = (unsigned char)c;
 	return (s);
 }
 
-/*int main()
+/*int	main(void)
 {
-	char	str[] = "Ola bom dia";
-	char	c = 'u';
-	ft_putstr_fd(ft_memset(str, c, 12), 1);
-	ft_putchar_fd('\n', 1);
+	char	buf[8] = "abcdefg";
+
+	ft_memset(buf + 2, 'X', 3);
+	printf("%s\n", buf);
+	return (0);
 }*/

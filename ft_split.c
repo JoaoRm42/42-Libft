@@ -6,78 +6,90 @@
 /*   By: joaoped2 <joaoped2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 14:35:42 by joaoped2          #+#    #+#             */
-/*   Updated: 2022/11/09 15:23:02 by joaoped2         ###   ########.fr       */
+/*   Updated: 2026/03/24 22:19:00 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static void	ft_allocate(char **tab, char const *s, char sep)
+static void	ft_free_split(char **arr, int used)
 {
-	char		**tab1;
-	char const	*tmp;
-
-	tmp = s;
-	tab1 = tab;
-	while (*tmp)
-	{
-		while (*s == sep)
-			++s;
-		tmp = s;
-		while (*tmp && *tmp != sep)
-			++tmp;
-		if (*tmp == sep || tmp > s)
-		{
-			*tab1 = ft_substr(s, 0, tmp - s);
-			s = tmp;
-			++tab1;
-		}
-	}
-	*tab1 = NULL;
+	while (used-- > 0)
+		free(arr[used]);
+	free(arr);
 }
 
-static int	ft_count_words(char const *s, char sep)
+static int	ft_count_words(char const *s, char c)
 {
-	int	word_count;
+	int	count;
 
-	word_count = 0;
+	count = 0;
 	while (*s)
 	{
-		while (*s == sep)
-			++s;
+		while (*s == c)
+			s++;
 		if (*s)
-			++word_count;
-		while (*s && *s != sep)
-			++s;
+			count++;
+		while (*s && *s != c)
+			s++;
 	}
-	return (word_count);
+	return (count);
 }
 
+static int	ft_add_word(char **arr, char const *start, char const *end, int i)
+{
+	arr[i] = ft_substr(start, 0, end - start);
+	if (!arr[i])
+	{
+		ft_free_split(arr, i);
+		return (0);
+	}
+	return (1);
+}
+
+/*
+** ft_split:
+** Divide uma string em palavras por um separador.
+*/
 char	**ft_split(char const *s, char c)
 {
-	char	**new;
-	int		size;
+	char		**arr;
+	int			i;
+	char const	*start;
 
 	if (!s)
 		return (NULL);
-	size = ft_count_words(s, c);
-	new = (char **)malloc(sizeof(char *) * (size + 1));
-	if (!new)
+	arr = (char **)malloc(sizeof(char *) * (ft_count_words(s, c) + 1));
+	if (!arr)
 		return (NULL);
-	ft_allocate(new, s, c);
-	return (new);
+	i = 0;
+	while (*s)
+	{
+		while (*s == c)
+			s++;
+		start = s;
+		while (*s && *s != c)
+			s++;
+		if (s > start && !ft_add_word(arr, start, s, i++))
+			return (NULL);
+	}
+	arr[i] = NULL;
+	return (arr);
 }
 
-/*int	main()
+/*int	main(void)
 {
-	char	str[] = "Eu vou ser splitado!";
-	char	c = ' ';
-	char	**spt = ft_split(str, c);
-	int	i = 0;
-	while (spt[i] != 0)
+	char	**s;
+	int		i;
+
+	s = ft_split("  um  dois   tres ", ' ');
+	i = 0;
+	while (s && s[i])
 	{
-		ft_putstr_fd(spt[i], 1);
+		printf("[%s]\n", s[i]);
+		free(s[i]);
 		i++;
 	}
-	ft_putchar_fd('\n', 1);
+	free(s);
+	return (0);
 }*/

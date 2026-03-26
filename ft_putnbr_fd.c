@@ -1,34 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joaoped2 <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: joaoped2 <joaoped2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/03 09:39:45 by joaoped2          #+#    #+#             */
-/*   Updated: 2022/11/03 09:39:46 by joaoped2         ###   ########.fr       */
+/*   Created: 2022/11/04 13:36:13 by joaoped2          #+#    #+#             */
+/*   Updated: 2026/03/24 22:20:00 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/*
+** ft_putnbr_fd:
+** Escreve um inteiro no descritor de ficheiro.
+*/
 void	ft_putnbr_fd(int n, int fd)
 {
-	if (n < 0)
+	long	nb;
+
+	nb = n;
+	if (nb < 0)
 	{
-		if (n == -2147483648)
-		{
-			ft_putstr_fd("-2147483648", fd);
-			return ;
-		}
 		ft_putchar_fd('-', fd);
-		n = -n;
+		nb = -nb;
 	}
-	if (n / 10)
-	{
-		ft_putnbr_fd(n / 10, fd);
-		ft_putnbr_fd(n % 10, fd);
-	}
-	else
-		ft_putchar_fd('0' + n, fd);
+	if (nb >= 10)
+		ft_putnbr_fd(nb / 10, fd);
+	ft_putchar_fd((nb % 10) + '0', fd);
 }
+
+/*int	main(void)
+{
+	ft_putnbr_fd(-42, 1);
+	ft_putchar_fd('\n', 1);
+	ft_putnbr_fd(2147483647, 1);
+	ft_putchar_fd('\n', 1);
+	return (0);
+}*/

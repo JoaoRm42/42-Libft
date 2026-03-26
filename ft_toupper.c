@@ -5,29 +5,27 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: joaoped2 <joaoped2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/03 10:35:18 by joaoped2          #+#    #+#             */
-/*   Updated: 2022/11/09 15:26:03 by joaoped2         ###   ########.fr       */
+/*   Created: 2022/11/03 09:38:51 by joaoped2          #+#    #+#             */
+/*   Updated: 2026/03/24 22:10:00 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/*
+** ft_toupper:
+** Converte uma letra minúscula para maiúscula.
+*/
 int	ft_toupper(int c)
 {
-	if ('a' <= c && c <= 'z')
+	if (c >= 'a' && c <= 'z')
 		return (c - 32);
-	else
-		return (c);
+	return (c);
 }
 
-/*int	main()
+/*int	main(void)
 {
-	ft_putchar_fd(ft_toupper('a'), 1);
-	ft_putchar_fd('\n', 1);
-	ft_putchar_fd(ft_toupper('u'), 1);
-	ft_putchar_fd('\n', 1);
-	ft_putchar_fd(ft_toupper('A'), 1);
-	ft_putchar_fd('\n', 1);
-	ft_putchar_fd(ft_toupper('5'), 1);
-	ft_putchar_fd('\n', 1);
+	printf("%c\n", ft_toupper('a'));
+	printf("%c\n", ft_toupper('Z'));
+	return (0);
 }*/

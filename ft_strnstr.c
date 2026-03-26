@@ -6,34 +6,39 @@
 /*   By: joaoped2 <joaoped2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 11:23:26 by joaoped2          #+#    #+#             */
-/*   Updated: 2022/11/09 15:25:17 by joaoped2         ###   ########.fr       */
+/*   Updated: 2026/03/24 22:17:00 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/*
+** ft_strnstr:
+** Procura substring numa string com limite de comprimento.
+*/
 char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
-	size_t	n;
+	size_t	i;
+	size_t	j;
 
-	if (*little == 0)
+	if (!*little)
 		return ((char *)big);
-	n = ft_strlen(little);
-	if (len == 0)
-		return (0);
-	while (*big && n <= len)
+	i = 0;
+	while (big[i] && i < len)
 	{
-		if (*big == *little && ft_strncmp(big, little, n) == 0)
-			return ((char *)big);
-		++big;
-		--len;
+		j = 0;
+		while (little[j] && i + j < len && big[i + j] == little[j])
+			j++;
+		if (!little[j])
+			return ((char *)(big + i));
+		i++;
 	}
 	return (NULL);
 }
 
-/*int	main()
+/*int	main(void)
 {
-	char	str[] = "Indo eu, indo eu";
-	char	str1[] = "indo";
-	ft_putendl_fd(ft_strnstr(str, str1, ft_strlen(str)), 1);
+	printf("%s\n", ft_strnstr("ola mundo", "mun", 9));
+	printf("%p\n", (void *)ft_strnstr("ola mundo", "mun", 5));
+	return (0);
 }*/

@@ -5,41 +5,48 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: joaoped2 <joaoped2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/03 09:39:45 by joaoped2          #+#    #+#             */
-/*   Updated: 2022/11/09 15:24:48 by joaoped2         ###   ########.fr       */
+/*   Created: 2022/11/04 13:36:13 by joaoped2          #+#    #+#             */
+/*   Updated: 2026/03/24 22:19:00 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/*
+** ft_strmapi:
+** Aplica função a cada caráter e devolve nova string.
+*/
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	char	*new;
-	size_t	len;
+	char	*res;
 	size_t	i;
 
-	i = 0;
-	if (!s)
-		return (ft_strdup(""));
-	len = ft_strlen(s);
-	new = (char *)malloc(sizeof(char) * (len + 1));
-	if (!new)
+	if (!s || !f)
 		return (NULL);
-	while (i < len)
+	res = (char *)malloc(ft_strlen(s) + 1);
+	if (!res)
+		return (NULL);
+	i = 0;
+	while (s[i])
 	{
-		new[i] = (*f)(i, s[i]);
-		++i;
+		res[i] = f(i, s[i]);
+		i++;
 	}
-	new[i] = 0;
-	return (new);
+	res[i] = '\0';
+	return (res);
 }
 
-/*char	ft_test(unsigned int i, char s)
+/*static char	plus_i(unsigned int i, char c)
 {
-	s += i;
+	return (c + (char)i);
 }
-int	main()
+
+int	main(void)
 {
-	char	str[] = "Ola";
-	ft_putendl_fd(ft_strmapi(str, ft_test), 1);
+	char	*s;
+
+	s = ft_strmapi("aaaa", plus_i);
+	printf("%s\n", s);
+	free(s);
+	return (0);
 }*/

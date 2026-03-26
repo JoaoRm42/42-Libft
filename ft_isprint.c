@@ -5,24 +5,26 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: joaoped2 <joaoped2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/03 09:39:28 by joaoped2          #+#    #+#             */
-/*   Updated: 2022/11/09 15:14:49 by joaoped2         ###   ########.fr       */
+/*   Created: 2022/11/03 09:38:51 by joaoped2          #+#    #+#             */
+/*   Updated: 2026/03/24 22:10:00 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/*
+** ft_isprint:
+** Verifica se o caráter é imprimível.
+*/
 int	ft_isprint(int c)
 {
 	return (c >= 32 && c <= 126);
 }
 
-/*int	main()
+/*int	main(void)
 {
-	ft_putnbr_fd(ft_isprint(45), 1);
-	ft_putchar_fd('\n', 1);
-	ft_putnbr_fd(ft_isprint(19), 1);
-	ft_putchar_fd('\n', 1);
-	ft_putnbr_fd(ft_isprint(127), 1);
-	ft_putchar_fd('\n', 1);
+	printf("%d\n", ft_isprint(' '));
+	printf("%d\n", ft_isprint('~'));
+	printf("%d\n", ft_isprint('\n'));
+	return (0);
 }*/

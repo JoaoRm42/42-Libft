@@ -6,33 +6,35 @@
 /*   By: joaoped2 <joaoped2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 09:38:25 by joaoped2          #+#    #+#             */
-/*   Updated: 2022/11/09 15:18:06 by joaoped2         ###   ########.fr       */
+/*   Updated: 2026/03/24 22:15:00 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/*
+** ft_memcpy:
+** Copia n bytes de src para dest (sem sobreposição).
+*/
 void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
 	unsigned char		*d;
 	const unsigned char	*s;
 
 	if (!dest && !src)
-		return (dest);
-	d = dest;
-	s = src;
-	while (n > 0)
-	{
+		return (NULL);
+	d = (unsigned char *)dest;
+	s = (const unsigned char *)src;
+	while (n--)
 		*d++ = *s++;
-		n--;
-	}
 	return (dest);
 }
 
-/*int main()
+/*int	main(void)
 {
-	char	str[] = "Vou ser copiado.";
-	char	dest[18];
-	ft_putstr_fd(ft_memcpy(dest, str, 18), 1);
-	ft_putchar_fd('\n', 1);
+	char	dst[8];
+
+	ft_memcpy(dst, "ola", 4);
+	printf("%s\n", dst);
+	return (0);
 }*/

@@ -6,32 +6,39 @@
 /*   By: joaoped2 <joaoped2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 10:00:04 by joaoped2          #+#    #+#             */
-/*   Updated: 2022/11/09 15:19:05 by joaoped2         ###   ########.fr       */
+/*   Updated: 2026/03/24 22:15:00 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/*
+** ft_memmove:
+** Copia n bytes de src para dest com sobreposição segura.
+*/
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	const unsigned char	*s;
 	unsigned char		*d;
+	const unsigned char	*s;
 
 	if (!dest && !src)
-		return (dest);
-	if (dest < src)
-		return (ft_memcpy(dest, src, n));
-	s = (unsigned char *)src;
+		return (NULL);
 	d = (unsigned char *)dest;
-	while (n--)
-		d[n] = s[n];
+	s = (const unsigned char *)src;
+	if (d < s)
+		while (n--)
+			*d++ = *s++;
+	else
+		while (n--)
+			d[n] = s[n];
 	return (dest);
 }
 
-/*int main()
+/*int	main(void)
 {
-	char	str[] = "Vou ser copiado.";
-	char	dest[1];
-	ft_putstr_fd(ft_memmove(dest, str, 10), 1);
-	ft_putchar_fd('\n', 1);
+	char	s[16] = "abcdef";
+
+	ft_memmove(s + 2, s, 4);
+	printf("%s\n", s);
+	return (0);
 }*/

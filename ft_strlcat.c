@@ -5,45 +5,43 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: joaoped2 <joaoped2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/03 10:26:11 by joaoped2          #+#    #+#             */
-/*   Updated: 2022/11/09 14:57:53 by joaoped2         ###   ########.fr       */
+/*   Created: 2022/11/03 09:38:51 by joaoped2          #+#    #+#             */
+/*   Updated: 2026/03/24 22:15:00 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-//#include <stdio.h>
 
+/*
+** ft_strlcat:
+** Concatena string em dst respeitando o tamanho total.
+*/
 size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
+	size_t	dlen;
+	size_t	slen;
 	size_t	i;
-	size_t	j;
-	char	*pt_src;
 
-	pt_src = (char *)src;
+	dlen = ft_strlen(dst);
+	slen = ft_strlen(src);
+	if (size <= dlen)
+		return (size + slen);
 	i = 0;
-	while (i < size && *dst)
+	while (src[i] && dlen + i < size - 1)
 	{
-		dst++;
+		dst[dlen + i] = src[i];
 		i++;
 	}
-	if (i == size)
-		return (i + ft_strlen(src));
-	j = 0;
-	while (pt_src[j])
-	{
-		if (j < size - i - 1)
-			*dst++ = pt_src[j];
-		j++;
-	}
-	*dst = 0;
-	return (j + i);
+	dst[dlen + i] = '\0';
+	return (dlen + slen);
 }
 
-/*int	main()
+/*int	main(void)
 {
-	char	dest[40] = "nem me vais ver!";
-	char	src[] = "nem a mim, mas vais saber o nosso tamanho!";
-	ft_putnbr_fd(ft_strlcat(dest, src, 15), 1);
-	ft_putchar_fd('\n', 1);
-	printf("%s", dest);
+	char	dst[10] = "abc";
+	size_t	r;
+
+	r = ft_strlcat(dst, "defgh", sizeof(dst));
+	printf("%s | %zu\n", dst, r);
+	return (0);
 }*/
